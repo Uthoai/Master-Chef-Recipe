@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Master Chef Recipe</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="discover_be">Discover Best Recipes</string>
+    <string name="search_here">Search here…</string>
+    <string name="just_for_yo">Just For You</string>
+    <string name="trending_re">Trending Recipes</string>
+
+    <string name="cook_like_a">Cook Like a Chef</string>
+    <string name="de_chef_is_">De Chef is a user-friendly recipe app designed for those who are new to cooking and want to try new recipes at home</string>
+    <string name="get_started">Get Started</string>
+    <string name="_4_8">4.8</string>
+
+</resources>
