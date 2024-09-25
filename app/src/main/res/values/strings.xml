@@ -12,5 +12,9 @@
     <string name="de_chef_is_">De Chef is a user-friendly recipe app designed for those who are new to cooking and want to try new recipes at home</string>
     <string name="get_started">Get Started</string>
     <string name="_4_8">4.8</string>
+    <string name="todo">TODO</string>
+    <string name="watch_video">Watch Video</string>
+    <string name="instructions">Instructions:</string>
+    <string name="ingredients">Ingredients:</string>
 
 </resources>

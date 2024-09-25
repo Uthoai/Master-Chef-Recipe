@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.best.free.master.chef.recipe.databinding.FragmentIntroBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class IntroFragment : Fragment() {
     private lateinit var binding: FragmentIntroBinding
     override fun onCreateView(

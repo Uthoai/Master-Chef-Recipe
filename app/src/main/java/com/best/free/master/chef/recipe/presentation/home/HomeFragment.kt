@@ -1,4 +1,4 @@
-package com.best.free.master.chef.recipe
+package com.best.free.master.chef.recipe.presentation.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,21 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.best.free.master.chef.recipe.presentation.home.adapter.SelectedCategoryMealItemAdapter
 import com.best.free.master.chef.recipe.core.common.gone
 import com.best.free.master.chef.recipe.core.common.visible
 import com.best.free.master.chef.recipe.databinding.FragmentHomeBinding
-import com.best.free.master.chef.recipe.presentation.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), SelectedCategoryMealItemAdapter.MealClickListener {
     private lateinit var binding: FragmentHomeBinding
     private val homeViewModel: HomeViewModel by viewModels()
 
     private val selectedCategoryMealItemAdapter by lazy {
-        SelectedCategoryMealItemAdapter()
+        SelectedCategoryMealItemAdapter(this)
     }
 
     override fun onCreateView(
@@ -54,5 +54,9 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onMealItemClick(mealId: String) {
+        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(mealId))
     }
 }

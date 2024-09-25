@@ -16,7 +16,7 @@ class GetMealListUseCase @Inject constructor(private val repository: MealReposit
             val data = repository.getMealList(mealCategoryName)
 
             if (data.isSuccessful && data.body() != null){
-                val ml = data.body()!!.meals
+                val ml = data.body()!!.mealList
                 val mlItem = ml?.map { it?.toMealItem() }
 
                 emit(Resource.Success(mlItem))

@@ -1,14 +1,13 @@
 package com.best.free.master.chef.recipe.data.dto
 
-
 import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
 import com.best.free.master.chef.recipe.domain.model.MealItem
 
 @Keep
-data class ResponseMealDTO(
+data class ResponseListOfMealByCategoryDTO(
     @SerializedName("meals")
-    val meals: List<Meal?>? = null
+    val mealList: List<Meal?>? = null
 ){
     @Keep
     data class Meal(
@@ -21,7 +20,7 @@ data class ResponseMealDTO(
     )
 }
 
-fun ResponseMealDTO.Meal.toMealItem(): MealItem {
+fun ResponseListOfMealByCategoryDTO.Meal.toMealItem(): MealItem {
     return MealItem(
         id = this.idMeal.toString(),
         name = this.strMeal.toString(),

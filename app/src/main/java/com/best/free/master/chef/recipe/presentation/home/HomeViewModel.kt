@@ -1,5 +1,6 @@
 package com.best.free.master.chef.recipe.presentation.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.best.free.master.chef.recipe.core.Resource
@@ -29,6 +30,7 @@ class HomeViewModel @Inject constructor(private val useCase: GetMealListUseCase)
                     }
                     is Resource.Success -> {
                         _homeMealDataState.value = HomeDataState(homeData = response.data)
+
                     }
                 }
             }
