@@ -44,6 +44,7 @@ koin = "3.4.3"
 # Other
 timber = "5.0.1"
 leakcanary = "2.12"
+flexbox = "3.0.0"
 
 [libraries]
 # AndroidX
@@ -96,6 +97,7 @@ koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = 
 # Other
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
 leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakcanary" }
+flexbox = { group = "com.google.android.flexbox", name = "flexbox", version.ref = "flexbox" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle" }

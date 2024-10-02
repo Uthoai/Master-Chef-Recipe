@@ -92,4 +92,10 @@ dependencies {
     androidTestImplementation(libs.androidx.test.ext)
     androidTestImplementation(libs.androidx.test.espresso.core)
     testImplementation(libs.junit)
+
+    //flex
+    implementation(libs.flexbox)
+
+    //ML-Kit text to speech
+    implementation("com.google.android.gms:play-services-mlkit-text-recognition:19.0.1")
 }

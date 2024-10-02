@@ -34,6 +34,7 @@
                 android:contentDescription="@string/todo"
                 android:scaleType="centerCrop"
                 app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/detail_image_bg"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
             <TextView
@@ -46,6 +47,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_meal_thumbnail"
                 tools:text="Meal Name" />
+
+            <ImageView
+                android:id="@+id/iv_btn_speech"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="20dp"
+                android:clickable="true"
+                android:contentDescription="@string/todo"
+                android:contextClickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_speech"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_meal_name"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/tv_category"
@@ -94,12 +110,25 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_instructions" />
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:id="@+id/ingredients_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_ingredients_label" />
+-->
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/ingredients_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:flexDirection="row"
+                app:flexWrap="wrap"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_ingredients_label" />
