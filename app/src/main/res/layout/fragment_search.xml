@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.best.free.master.chef.recipe.presentation.search.SearchViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.search.SearchFragment">
+
+        <TextView
+            android:id="@+id/tv_search_label"
+            android:layout_width="267dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="71dp"
+            android:text="@string/search_best_recipe"
+            android:textStyle="bold"
+            android:textSize="@dimen/heading_medium_text"
+            android:textColor="@color/shadeOfTeal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/editText_search"
+            android:text="@={viewModel.searchString}"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@drawable/edit_text_bg"
+            android:drawableStart="@drawable/ic_search_24"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="@string/search_here"
+            android:inputType="text"
+            android:padding="8dp"
+            android:textColorHint="#6D6B6B"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="22dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_search_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searchItemRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            android:orientation="vertical"
+            tools:listitem="@layout/meal_item_grid_layout"
+            android:layout_marginTop="26dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@id/editText_search" />
+
+        <ProgressBar
+            android:id="@+id/progress_trendRec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/editText_search"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:elevation="4dp"
+            android:layout_marginTop="55dp"
+            android:indeterminateTint="@color/black"
+            android:visibility="gone" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

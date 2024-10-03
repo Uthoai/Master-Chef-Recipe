@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.best.free.master.chef.recipe.R
 import com.best.free.master.chef.recipe.presentation.home.adapter.SelectedCategoryMealItemAdapter
 import com.best.free.master.chef.recipe.core.common.gone
 import com.best.free.master.chef.recipe.core.common.visible
@@ -31,6 +32,10 @@ class HomeFragment : Fragment(), SelectedCategoryMealItemAdapter.MealClickListen
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         observer()
+
+        binding.discoverBe.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+        }
 
         return binding.root
     }

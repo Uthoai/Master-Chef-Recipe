@@ -16,5 +16,6 @@
     <string name="watch_video">Watch Video</string>
     <string name="instructions">Instructions:</string>
     <string name="ingredients">Ingredients:</string>
+    <string name="search_best_recipe">Search Best Recipe</string>
 
 </resources>

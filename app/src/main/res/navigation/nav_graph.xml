@@ -13,15 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/introFragment"
-        android:name="com.best.free.master.chef.recipe.IntroFragment"
-        android:label="fragment_intro"
-        tools:layout="@layout/fragment_intro" >
         <action
-            android:id="@+id/action_introFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -31,5 +25,17 @@
         <argument
             android:name="mealID"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.best.free.master.chef.recipe.presentation.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
 </navigation>

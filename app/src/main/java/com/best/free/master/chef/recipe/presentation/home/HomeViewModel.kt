@@ -1,6 +1,5 @@
 package com.best.free.master.chef.recipe.presentation.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.best.free.master.chef.recipe.core.Resource
