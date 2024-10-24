@@ -1,5 +1,6 @@
 package com.best.free.master.chef.recipe.data.repository_impl
 
+import com.best.free.master.chef.recipe.data.dto.ResponseCategoriesDTO
 import com.best.free.master.chef.recipe.data.dto.ResponseListOfMealByCategoryDTO
 import com.best.free.master.chef.recipe.data.dto.ResponseMealDetailDTO
 import com.best.free.master.chef.recipe.data.dto.ResponseSearchMealsDTO
@@ -29,6 +30,11 @@ class MealRepositoryImpl @Inject constructor(
 
     override suspend fun getRandomMeal(): Response<ResponseMealDetailDTO> {
         val response = apiService.getRandomMeal()
+        return response
+    }
+
+    override suspend fun getMealCategories(): Response<ResponseCategoriesDTO> {
+        val response = apiService.getMealCategories()
         return response
     }
 

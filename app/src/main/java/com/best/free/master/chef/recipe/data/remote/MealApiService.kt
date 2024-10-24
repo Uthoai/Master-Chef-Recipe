@@ -1,5 +1,6 @@
 package com.best.free.master.chef.recipe.data.remote
 
+import com.best.free.master.chef.recipe.data.dto.ResponseCategoriesDTO
 import com.best.free.master.chef.recipe.data.dto.ResponseListOfMealByCategoryDTO
 import com.best.free.master.chef.recipe.data.dto.ResponseMealDetailDTO
 import com.best.free.master.chef.recipe.data.dto.ResponseSearchMealsDTO
@@ -20,5 +21,8 @@ interface MealApiService {
 
     @GET("random.php")
     suspend fun getRandomMeal(): Response<ResponseMealDetailDTO>
+
+    @GET("categories.php")
+    suspend fun getMealCategories(): Response<ResponseCategoriesDTO>
 
 }

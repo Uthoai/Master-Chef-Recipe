@@ -14,6 +14,7 @@ import com.best.free.master.chef.recipe.core.common.gone
 import com.best.free.master.chef.recipe.core.common.visible
 import com.best.free.master.chef.recipe.databinding.FragmentHomeBinding
 import com.best.free.master.chef.recipe.domain.model.MealDetails
+import com.best.free.master.chef.recipe.presentation.home.adapter.CategoryAdapter
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -22,6 +23,7 @@ import kotlinx.coroutines.launch
 class HomeFragment : Fragment(), SelectedCategoryMealItemAdapter.MealClickListener {
     private lateinit var binding: FragmentHomeBinding
     private val homeViewModel: HomeViewModel by viewModels()
+    private lateinit var categoryAdapter: CategoryAdapter
 
     private val selectedCategoryMealItemAdapter by lazy {
         SelectedCategoryMealItemAdapter(this)
@@ -63,7 +65,7 @@ class HomeFragment : Fragment(), SelectedCategoryMealItemAdapter.MealClickListen
         }
 
         lifecycleScope.launch {
-            homeViewModel.randomMeal.collect{randomState->
+            homeViewModel.randomMealState.collect{ randomState->
                 if (randomState.loading){
                     binding.progressRandomMeal.visible()
                 }
@@ -73,6 +75,21 @@ class HomeFragment : Fragment(), SelectedCategoryMealItemAdapter.MealClickListen
                 if (randomState.mealDetails != null){
                     binding.progressRandomMeal.gone()
                     setUiData(randomState.mealDetails[0])
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            homeViewModel.categoryDataState.collect{ categoryState->
+                if (categoryState.loading){
+                    //loading
+                }
+                if (categoryState.error != null){
+                    //error
+                }
+                if (categoryState.categoryData != null) {
+                    categoryAdapter = CategoryAdapter(categoryState.categoryData)
+                    binding.categoryRecyclerView.adapter = categoryAdapter
                 }
             }
         }

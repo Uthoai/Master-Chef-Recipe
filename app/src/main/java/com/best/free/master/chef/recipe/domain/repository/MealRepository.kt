@@ -1,5 +1,6 @@
 package com.best.free.master.chef.recipe.domain.repository
 
+import com.best.free.master.chef.recipe.data.dto.ResponseCategoriesDTO
 import com.best.free.master.chef.recipe.data.dto.ResponseListOfMealByCategoryDTO
 import com.best.free.master.chef.recipe.data.dto.ResponseMealDetailDTO
 import com.best.free.master.chef.recipe.data.dto.ResponseSearchMealsDTO
@@ -14,5 +15,7 @@ interface MealRepository {
     suspend fun searchMeals(mealsName: String): Response<ResponseSearchMealsDTO>
 
     suspend fun getRandomMeal(): Response<ResponseMealDetailDTO>
+
+    suspend fun getMealCategories(): Response<ResponseCategoriesDTO>
 
 }
