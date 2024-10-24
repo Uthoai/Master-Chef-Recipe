@@ -99,4 +99,13 @@ dependencies {
 
     //ML-Kit text to speech
     implementation("com.google.android.gms:play-services-mlkit-text-recognition:19.0.1")
+
+    //sdp ssp
+    implementation(libs.sdp.android)
+    implementation(libs.ssp.android)
+
+    //exo player
+    implementation(libs.media3.exoplayer)
+    implementation(libs.media3.exoplayer.dash)
+    implementation(libs.media3.ui)
 }

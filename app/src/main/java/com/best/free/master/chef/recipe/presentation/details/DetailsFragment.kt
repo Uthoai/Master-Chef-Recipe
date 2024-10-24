@@ -1,6 +1,7 @@
 package com.best.free.master.chef.recipe.presentation.details
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import androidx.fragment.app.Fragment
@@ -11,11 +12,13 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.best.free.master.chef.recipe.core.common.gone
 import com.best.free.master.chef.recipe.core.common.visible
 import com.best.free.master.chef.recipe.databinding.FragmentDetailsBinding
 import com.best.free.master.chef.recipe.domain.model.MealDetails
+import com.best.free.master.chef.recipe.presentation.watch.WatchActivity
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,6 +33,7 @@ class DetailsFragment : Fragment() {
 
     private var textToSpeech: TextToSpeech? = null
     private var speechText: String? = null
+    private var url: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +53,15 @@ class DetailsFragment : Fragment() {
 
         getMealDetailByID(args.mealID)
 
+        binding.btnWatchVideo.setOnClickListener {
+            url?.let {
+                //findNavController().navigate(DetailsFragmentDirections.actionDetailsFragmentToWatchFragment(url))
+                val intent = Intent(requireContext(), WatchActivity::class.java)
+                intent.putExtra("URL", url)
+                startActivity(intent)
+            }
+        }
+
         return binding.root
     }
 
@@ -66,6 +79,7 @@ class DetailsFragment : Fragment() {
                 if ((detailState.mealDetails ?.size ?: 0) != 0){
                     setUiData(detailState.mealDetails?.get(0))
                     setSpeechText(detailState.mealDetails?.get(0))
+                    url = detailState.mealDetails?.get(0)?.youtubeUrl
                     binding.progress.gone()
                     //Log.d("TAG5", "getMealDetailByID: ${mealDetail.thumbnailUrl}")
                 }

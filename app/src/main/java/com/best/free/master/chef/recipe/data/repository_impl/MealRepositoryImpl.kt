@@ -27,4 +27,9 @@ class MealRepositoryImpl @Inject constructor(
         return response
     }
 
+    override suspend fun getRandomMeal(): Response<ResponseMealDetailDTO> {
+        val response = apiService.getRandomMeal()
+        return response
+    }
+
 }

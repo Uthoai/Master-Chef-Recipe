@@ -13,4 +13,6 @@ interface MealRepository {
 
     suspend fun searchMeals(mealsName: String): Response<ResponseSearchMealsDTO>
 
+    suspend fun getRandomMeal(): Response<ResponseMealDetailDTO>
+
 }

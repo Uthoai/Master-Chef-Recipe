@@ -7,5 +7,10 @@
 
     <style name="Theme.MasterChefRecipe" parent="Base.Theme.MasterChefRecipe" />
 
+    <style name="ImageViewBorder">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">18dp</item>
+    </style>
+
 
 </resources>

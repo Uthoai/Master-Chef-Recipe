@@ -13,18 +13,17 @@ import com.best.free.master.chef.recipe.R
 import com.best.free.master.chef.recipe.core.common.gone
 import com.best.free.master.chef.recipe.core.common.visible
 import com.best.free.master.chef.recipe.databinding.FragmentSearchBinding
-import com.best.free.master.chef.recipe.presentation.home.HomeFragmentDirections
-import com.best.free.master.chef.recipe.presentation.home.adapter.SelectedCategoryMealItemAdapter
+import com.best.free.master.chef.recipe.presentation.search.adapter.SearchMealItemAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SearchFragment : Fragment(), SelectedCategoryMealItemAdapter.MealClickListener {
+class SearchFragment : Fragment(), SearchMealItemAdapter.MealClickListener {
     private lateinit var binding: FragmentSearchBinding
     private val viewModel: SearchViewModel by viewModels()
 
-    private val selectedCategoryMealItemAdapter by lazy {
-        SelectedCategoryMealItemAdapter(this)
+    private val searchMealItemAdapter by lazy {
+        SearchMealItemAdapter(this)
     }
 
     override fun onCreateView(
@@ -57,8 +56,8 @@ class SearchFragment : Fragment(), SelectedCategoryMealItemAdapter.MealClickList
                 }
                 if (state.searchData != null){
                     binding.progressTrendRec.gone()
-                    selectedCategoryMealItemAdapter.submitList(state.searchData)
-                    binding.searchItemRecyclerView.adapter = selectedCategoryMealItemAdapter
+                    searchMealItemAdapter.submitList(state.searchData)
+                    binding.searchItemRecyclerView.adapter = searchMealItemAdapter
                 }
             }
         }

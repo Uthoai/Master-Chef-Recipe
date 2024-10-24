@@ -34,7 +34,6 @@
                 android:contentDescription="@string/todo"
                 android:scaleType="centerCrop"
                 app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/detail_image_bg"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
             <TextView

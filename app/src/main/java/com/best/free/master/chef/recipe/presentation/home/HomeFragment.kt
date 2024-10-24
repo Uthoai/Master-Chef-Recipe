@@ -13,6 +13,8 @@ import com.best.free.master.chef.recipe.presentation.home.adapter.SelectedCatego
 import com.best.free.master.chef.recipe.core.common.gone
 import com.best.free.master.chef.recipe.core.common.visible
 import com.best.free.master.chef.recipe.databinding.FragmentHomeBinding
+import com.best.free.master.chef.recipe.domain.model.MealDetails
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -33,7 +35,7 @@ class HomeFragment : Fragment(), SelectedCategoryMealItemAdapter.MealClickListen
 
         observer()
 
-        binding.discoverBe.setOnClickListener {
+        binding.editTextSearch.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }
 
@@ -58,6 +60,32 @@ class HomeFragment : Fragment(), SelectedCategoryMealItemAdapter.MealClickListen
                     binding.trendRecyclerView.adapter = selectedCategoryMealItemAdapter
                 }
             }
+        }
+
+        lifecycleScope.launch {
+            homeViewModel.randomMeal.collect{randomState->
+                if (randomState.loading){
+                    binding.progressRandomMeal.visible()
+                }
+                if (randomState.error != null){
+                    binding.progressRandomMeal.gone()
+                }
+                if (randomState.mealDetails != null){
+                    binding.progressRandomMeal.gone()
+                    setUiData(randomState.mealDetails[0])
+                }
+            }
+        }
+    }
+
+    private fun setUiData(mealData: MealDetails?) {
+        Glide.with(this)
+            .load(mealData!!.thumbnailUrl)
+            .into(binding.ivMealUrl)
+        binding.tvMealTitle.text = mealData.name
+
+        binding.ivMealUrl.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(mealData.id))
         }
     }
 

@@ -18,4 +18,7 @@ interface MealApiService {
     @GET("search.php")
     suspend fun searchMeal(@Query("s") searchMealName: String): Response<ResponseSearchMealsDTO>
 
+    @GET("random.php")
+    suspend fun getRandomMeal(): Response<ResponseMealDetailDTO>
+
 }
