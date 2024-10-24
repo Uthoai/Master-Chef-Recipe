@@ -7,8 +7,12 @@ import com.best.free.master.chef.recipe.databinding.CategoryItemBinding
 import com.best.free.master.chef.recipe.domain.model.MealCategories
 import com.bumptech.glide.Glide
 
-class CategoryAdapter(private val list: List<MealCategories?>?) :
+class CategoryAdapter(private val list: List<MealCategories?>?, private val listener: ItemClickListener) :
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+
+    interface ItemClickListener {
+        fun categoryOnClick(mealCategory: String)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         return CategoryViewHolder(
@@ -25,12 +29,16 @@ class CategoryAdapter(private val list: List<MealCategories?>?) :
     }
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        list?.get(position)?.let {
+        list?.get(position)?.let {it->
             holder.binding.tvCategoryTitle.text = it.name
 
             Glide.with(holder.itemView.context)
                 .load(it.imageUrl)
                 .into(holder.binding.ivCategoryUrl)
+
+            holder.itemView.setOnClickListener {
+                listener.categoryOnClick(list[position]!!.name)
+            }
         }
     }
 

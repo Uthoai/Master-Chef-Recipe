@@ -20,10 +20,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(), SelectedCategoryMealItemAdapter.MealClickListener {
+class HomeFragment : Fragment(), SelectedCategoryMealItemAdapter.MealClickListener, CategoryAdapter.ItemClickListener {
     private lateinit var binding: FragmentHomeBinding
     private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var categoryAdapter: CategoryAdapter
+
+    private var selectedCategory = "Dessert"
 
     private val selectedCategoryMealItemAdapter by lazy {
         SelectedCategoryMealItemAdapter(this)
@@ -44,9 +46,8 @@ class HomeFragment : Fragment(), SelectedCategoryMealItemAdapter.MealClickListen
         return binding.root
     }
 
-
     private fun observer() {
-        homeViewModel.getMealData("Dessert")
+        homeViewModel.getMealData(selectedCategory)
 
         lifecycleScope.launch {
             homeViewModel.homeMealDataState.collect{homeState->
@@ -88,7 +89,7 @@ class HomeFragment : Fragment(), SelectedCategoryMealItemAdapter.MealClickListen
                     //error
                 }
                 if (categoryState.categoryData != null) {
-                    categoryAdapter = CategoryAdapter(categoryState.categoryData)
+                    categoryAdapter = CategoryAdapter(categoryState.categoryData,this@HomeFragment)
                     binding.categoryRecyclerView.adapter = categoryAdapter
                 }
             }
@@ -108,5 +109,10 @@ class HomeFragment : Fragment(), SelectedCategoryMealItemAdapter.MealClickListen
 
     override fun onMealItemClick(mealId: String) {
         findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(mealId))
+    }
+
+    override fun categoryOnClick(mealCategory: String) {
+        selectedCategory = mealCategory
+        homeViewModel.getMealData(selectedCategory)
     }
 }

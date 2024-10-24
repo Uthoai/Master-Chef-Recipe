@@ -61,7 +61,6 @@
            android:textSize="@dimen/title_text"
            android:textColor="@color/black"
            android:textStyle="bold"
-           android:layout_marginTop="21dp"
            app:layout_constraintTop_toBottomOf="@id/categoryRecyclerView"
            app:layout_constraintStart_toStartOf="@id/editText_search"/>
 
@@ -123,7 +122,7 @@
            android:textSize="@dimen/title_text"
            android:textColor="@color/black"
            android:textStyle="bold"
-           android:layout_marginTop="21dp"
+           android:layout_marginTop="16dp"
            app:layout_constraintTop_toBottomOf="@id/randomItemCardView"
            app:layout_constraintStart_toStartOf="@id/randomItemCardView"/>
 
@@ -145,7 +144,7 @@
            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
            android:orientation="horizontal"
            tools:listitem="@layout/meal_item_grid_layout"
-           android:layout_marginTop="21dp"
+           android:layout_marginTop="16dp"
            android:layout_marginStart="16dp"
            app:layout_constraintTop_toBottomOf="@id/tv_trending_re"/>
 
